@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../libkleeBasic.a  CMakeFiles/kleeBasic.dir/CmdLineOptions.cpp.o CMakeFiles/kleeBasic.dir/ConstructSolverChain.cpp.o CMakeFiles/kleeBasic.dir/KTest.cpp.o CMakeFiles/kleeBasic.dir/Statistics.cpp.o
+/usr/bin/ranlib ../libkleeBasic.a

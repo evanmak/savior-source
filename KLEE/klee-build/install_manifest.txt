@@ -1,0 +1,15 @@
+/usr/local/lib/klee/runtime/klee-uclibc.bca
+/usr/local/lib/klee/runtime/klee-uclibcxx.bca
+/usr/local/include/klee/klee.h
+/usr/local/lib/klee/runtime/kleeRuntimeIntrinsic.bc
+/usr/local/lib/klee/runtime/klee-libc.bc
+/usr/local/lib/klee/runtime/libkleeRuntimePOSIX.bca
+/usr/local/lib/libkleeRuntest.so.1.0
+/usr/local/lib/libkleeRuntest.so
+/usr/local/bin/gen-random-bout
+/usr/local/bin/kleaver
+/usr/local/bin/klee
+/usr/local/bin/klee-replay
+/usr/local/bin/klee-stats
+/usr/local/bin/ktest-tool
+/usr/local/bin/converter

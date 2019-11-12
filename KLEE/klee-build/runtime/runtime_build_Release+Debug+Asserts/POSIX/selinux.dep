@@ -1,0 +1,5 @@
+/root/work/savior/KLEE/klee-build/runtime/runtime_build_Release+Debug+Asserts/POSIX/selinux.bc: \
+  /root/work/savior/KLEE/runtime/POSIX/selinux.c \
+  /root/work/savior/KLEE/klee-build/include/klee/Config/config.h
+
+/root/work/savior/KLEE/klee-build/include/klee/Config/config.h:

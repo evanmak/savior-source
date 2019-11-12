@@ -1,0 +1,8 @@
+/root/work/savior/KLEE/klee-build/runtime/runtime_build_Release+Debug+Asserts/POSIX/fd.bc: \
+  /root/work/savior/KLEE/runtime/POSIX/fd.c \
+  /root/work/savior/KLEE/runtime/POSIX/fd.h \
+  /root/work/savior/KLEE/include/klee/klee.h
+
+/root/work/savior/KLEE/runtime/POSIX/fd.h:
+
+/root/work/savior/KLEE/include/klee/klee.h:

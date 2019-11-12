@@ -1,0 +1,2 @@
+/root/work/savior/KLEE/klee-build/runtime/runtime_build_Release+Debug+Asserts/klee-libc/strcmp.bc: \
+  /root/work/savior/KLEE/runtime/klee-libc/strcmp.c

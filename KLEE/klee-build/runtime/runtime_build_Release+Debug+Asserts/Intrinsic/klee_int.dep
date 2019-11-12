@@ -1,0 +1,5 @@
+/root/work/savior/KLEE/klee-build/runtime/runtime_build_Release+Debug+Asserts/Intrinsic/klee_int.bc: \
+  /root/work/savior/KLEE/runtime/Intrinsic/klee_int.c \
+  /root/work/savior/KLEE/include/klee/klee.h
+
+/root/work/savior/KLEE/include/klee/klee.h:

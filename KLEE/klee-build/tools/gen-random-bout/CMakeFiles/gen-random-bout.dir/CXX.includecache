@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/klee/Internal/ADT/KTest.h
+
+/root/work/savior/KLEE/tools/gen-random-bout/gen-random-bout.cpp
+assert.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+time.h
+-
+unistd.h
+-
+klee/Internal/ADT/KTest.h
+/root/work/savior/KLEE/tools/gen-random-bout/klee/Internal/ADT/KTest.h
+

@@ -1,0 +1,57 @@
+;######config file for savior fuzzor#####################################
+;# in order to use it, please replace the PROG and SAVIOR place holders #
+;# in text below to reflect the correct file locations                  #
+;########################################################################
+[moriarty]
+;if INPUTTYPE is symfile, insert INPUT_FILE at proper location
+target_bin=@target/savior-PROG 
+target_bc=@target/savior-PROG.dma.bc 
+sync_dir=@target/out
+bitmodel=64
+;inputtype can be [stdin|symfile]
+inputtype=stdin
+;moriarty will inovke each explorer $(max_instance) times
+max_explorer_instance=1
+;how many seed each explorer will run in a batch
+batch_run_input_num=20
+
+[afl]
+root=SAVIOR/AFL/
+in_dir=@target/in
+slave_num=1
+; use_dict=@target/png.dict
+use_ui=0
+
+[klee conc_explorer]
+bin=SAVIOR/KLEE/klee-build/bin/klee
+;klee searcher could be [AFLUnCovSearcher|SANGuidedSearcher] 
+;use ':' to separate the heuristics, klee will apply both searchers 
+search_heuristic=AFLUnCovSearcher:SANGuidedSearcher
+klee_seed_dir=@target/klee_new_input
+converter=SAVIOR/KLEE/klee-build/bin/converter
+max_interesting_output=65536
+;location of klee errors will be stored 
+error_dir=@target/klee_errors
+;how many seconds we allow each seed to run.
+max_time_per_seed=150
+
+;c++ options
+;klee_ctor_stub = 1
+;klee_uclibcxx = 1
+
+[switch oracle]
+;fuzzing switching heuristic can be [random|saturate|driller_saturate]
+strategy=random
+
+[edge oracle]
+;seed selecting heurisitic could be [sequential|random|san-guided|bug-potential|avg-bug-potential] 
+;use ':' to separate the heuristics, edge oracle will use them in round-robin 
+heuristics=san-guided
+bug_potential_weight=10
+code_potential_weight=50
+
+
+[auxiliary info]
+code_reach_map=@target/PROG.reach.cov
+bug_reach_map=@target/PROG.reach.bug
+pair_edge_file=@target/PROG.edge

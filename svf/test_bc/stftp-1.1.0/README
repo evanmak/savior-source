@@ -1,0 +1,8 @@
+stftp: A "simple" terminal FTP client.
+Version 1.1.0 release notes
+
+1.1.0 adds a new filter command, which allows the user to only show those
+files beginning with a given string. This should help navigate lengthy 
+directory listings and such. Also, a few bugs were fixed here and there.
+
+Mail comments, complaints, etc. to <abeausoleil@gmail.com>

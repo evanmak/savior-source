@@ -1,0 +1,1 @@
+/usr/local/bin/clang-3.6  -I/root/work/savior/KLEE/include -I/root/work/savior/KLEE/klee-build/include -emit-llvm -std=gnu89 -D_DEBUG -D_GNU_SOURCE -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS -D__NO_INLINE__ -O2 -g -Wall -Wwrite-strings

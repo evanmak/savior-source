@@ -1,0 +1,92 @@
+afl-cov-0.6 (06/05/2016):
+    - (Markus Teufelberger) Add --cover-corpus argument so that code coverage
+      is measured only after all new AFL test cases are executed. The main
+      advantage is that code coverage results are produced more quickly in
+      this mode since AFL can generate test cases - at least initially - much
+      faster than code coverage can be calculated for each test case. The
+      trade off in this mode is that code coverage stats are not tracked per
+      AFL test case, but rather across all new test cases essentially as a
+      unified set. In --live mode, --cover-corpus causes coverage to be
+      calculated once per sleep cycle after all test cases have been executed.
+      In --coverage-at-exit mode, only a single coverage calculation will be
+      performed just before afl-cov exits.
+    - In either --cover-corpus or --coverage-at-exit modes, the
+      cov/id-delta-cov file will contain AFL test case ID ranges for where
+      coverage is hit. This is necessary because these modes cause afl-cov to
+      execute a series of AFL test cases (instead of each individual test
+      case one at a time) before coverage is calculated.
+    - Add a prerequisite test to make sure the targeted binary is compiled
+      with code coverage support ('-fprofile-arcs -ftest-coverage'). This test
+      can be run by itself with --gcov-check.
+    - Use the tempfile module for temporary files (suggested by Markus
+      Teufelberger in issue #19).
+
+afl-cov-0.5 (01/11/2016):
+    - For --live mode operations, add the same core pattern detection logic to
+      afl-cov that is implemented by afl-fuzz. This helps to ensure that the
+      environment in which afl-cov is running is consistent with what afl-fuzz
+      expects to see.
+    - Make sure --afl-fuzzing-dir exists in --func-search and --line-search
+      modes.
+
+afl-cov-0.4 (01/09/2016):
+    - Add support for parallelized execution runs of AFL. This is done by
+      tracking all fuzzing directory instances created with afl-fuzz '-M' or
+      '-S'. These directories are created in the main sync directory
+      ('afl-fuzz -o sync_dir'). The coverage results are calculated globally
+      across all fuzzing instances.
+    - Default to not include branch coverage data within code coverage results
+      This is because AFL commonly build up many hundreds of test cases, and
+      generating branch coverage across all of these cases may slow afl-cov
+      down significantly. However, if branch coverage is desired or required,
+      just add the new --enable-branch-coverage argument.
+    - Added a test suite in the test/ directory that leverages the python
+      unittest module. Proper operation of the test suite requires afl-fuzz
+      to be installed, and tests are performed against a particular commit
+      (e3ae6747) from the fwknop project for which AFL test cases were
+      pre-built.
+    - Bug fix reported by @kcwu about some files not showing up in zero
+      coverage lcov web reports.
+
+afl-cov-0.3 (06/29/2015):
+    - Add --background mode to facilitate clean integration with afl-fuzz
+      wrapper scripts. In this mode, afl-cov will wait for afl-fuzz to start,
+      produce coverage results while afl-fuzz is running, and then exit
+      automatically when finished. Here is an example of a wrapper script from
+      the fwknop project that combines afl-cov in --background mode with
+      afl-fuzz:
+
+        https://github.com/mrash/fwknop/blob/master/test/afl/fuzzing-wrappers/client-rc.sh
+
+    - Add fuzzing-dir/cov/afl-cov.log file to track verbose run time
+      information.
+    - Add fuzzing-dir/cov/afl-cov-status file to track the current PID, argv,
+      and afl-cov version.
+
+afl-cov-0.2 (05/28/2015):
+    - Add the fuzzing-dir/cov/id-delta-cov file which lists all functions and
+      (and optionally lines) that are executed by the first "id:000000*" test
+      case, and then lists all new functions/lines executed in subsequent test
+      cases. In --func-search or --line-search modes, the id-delta-cov file is
+      parsed directly instead of parsing cov/diff/ file output. Here is an
+      example of what the contents of this file looks like:
+
+      # id:NNNNNN*_file, cycle, src_file, coverage_type, fcn/line
+      id:000000,orig:access.conf, 0, proj/log_msg.c, function, free_logging()
+      id:000000,orig:access.conf, 0, proj/log_msg.c, function, init_logging()
+      id:000000,orig:access.conf, 0, proj/log_msg.c, function, log_msg()
+
+    - Replace the fuzzing-dir/cov/zero-cov/ directory with a single file
+      at the same path fuzzing-dir/cov/zero-cov that lists all
+      functions/lines that are never executed by any AFL test case.
+    - Add the fuzzing-dir/cov/pos-cov file that lists all functions/lines
+      that are executed at least once by an AFL test case.
+    - Use the 'fuzzer_stats' file for acquiring the afl-fuzz PID in --live
+      mode. This closes issue #4 on github.
+    - Default to not preserving all lcov files - just keep the final one that
+      contains all cumulative coverage results. This behavior can be changed
+      with the --preserve-all-lcov-files argument.
+    - Track and display the AFL cycle number for each queue/id:NNNNNN* file.
+
+afl-cov-0.1 (05/09/2015):
+    - Initial release

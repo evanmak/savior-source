@@ -1,0 +1,5 @@
+* Send NOOPs occasionally (10 seconds?) to keep server contact
+* Support symbolic links
+* Try to improve the progress bar time resolution
+* Sort file names by other means (date, size, etc)
+* Do SFTP, someday

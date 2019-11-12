@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>DSLab » Cloud9 - /tools/klee-replay/klee-replay.h - Changes - Dependable Systems Laboratory</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link rel='shortcut icon' href='/favicon.ico?1293099743' />
+<link href="/themes/dslab/stylesheets/application.css?1314115855" media="all" rel="stylesheet" type="text/css" />
+
+<script src="/javascripts/prototype.js?1251746896" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1254993814" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1254993814" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1254993814" type="text/javascript"></script>
+<script src="/javascripts/application.js?1293099743" type="text/javascript"></script>
+<link href="/stylesheets/jstoolbar.css?1293099743" media="screen" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1293099743);}
+    </style>
+<![endif]-->
+
+<!-- page specific tags -->
+
+  <link href="/plugin_assets/redmine_checkout/stylesheets/checkout.css" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/plugin_assets/redmine_checkout/javascripts/checkout.js" type="text/javascript"></script>
+  <script src="/plugin_assets/redmine_checkout/javascripts/ZeroClipboard.js" type="text/javascript"></script>
+
+  <script src="/javascripts/repository_navigation.js?1293099743" type="text/javascript"></script>
+</head>
+<body class="theme-Dslab controller-repositories action-changes project-cloud9">
+<div id="wrapper">
+<div id="wrapper2">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="/login" class="login">Sign in</a></li></ul>    </div>
+    
+    <ul><li><a href="/" class="home">Home</a></li>
+<li><a href="/" class="projects">Projects</a></li>
+<li><a href="http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="quick-search">
+        <form action="/search/index/cloud9" method="get">
+        <input name="changesets" type="hidden" value="1" />
+        <a href="/search/index/cloud9" accesskey="4">Search by name</a>:
+        <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+        </form>
+        
+    </div>
+    
+    <h1>DSLab » Cloud9</h1>
+    
+    
+    <div id="main-menu">
+        <ul><li><a href="/projects/cloud9" class="overview">Overview</a></li>
+<li><a href="/projects/cloud9/activity" class="activity">Activity</a></li>
+<li><a href="/projects/cloud9/issues" class="issues">Issues</a></li>
+<li><a href="/projects/cloud9/wiki" class="wiki">Wiki</a></li>
+<li><a href="/embedded/cloud9" class="embedded">Documentation</a></li>
+<li><a href="/projects/cloud9/files" class="files">Files</a></li>
+<li><a href="/projects/cloud9/repository" class="repository selected">Repository</a></li></ul>
+    </div>
+    
+</div>
+
+<div class="nosidebar" id="main">
+    <div id="sidebar">        
+        
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="repository-info">
+  
+  
+  <div id="checkout_box">
+    <ul id="checkout_protocols">
+          <li>
+        <a  id="checkout_protocol_ssh" data-permission="read-only" href="git@dslabgit.epfl.ch:cloud9/cloud9.git">SSH</a>
+      </li>
+          <li>
+        <a class="selected" id="checkout_protocol_https" data-permission="read-only" href="https://dslabgit.epfl.ch/git/cloud9/cloud9.git">HTTPS</a>
+      </li>
+        </ul>
+    <input id="checkout_url" name="checkout_url" readonly="readonly" type="text" value="git clone https://dslabgit.epfl.ch/git/cloud9/cloud9.git" />
+
+    <div id="clipboard_container" title="Copy to clipboard" style="display: none;">
+       <div id="clipboard_button"><img alt="Paste" src="/plugin_assets/redmine_checkout/images/paste.png" /></div>
+    </div>
+        <p>This URL has <span id="checkout_access">Read-Only</span> access.</p>
+  
+    <script type="text/javascript">
+//<![CDATA[
+
+      var checkout_access   = $H({'checkout_protocol_ssh': 'Read-Only', 'checkout_protocol_https': 'Read-Only'});
+      var checkout_commands = $H({'checkout_protocol_ssh': 'git clone git@dslabgit.epfl.ch:cloud9/cloud9.git', 'checkout_protocol_https': 'git clone https://dslabgit.epfl.ch/git/cloud9/cloud9.git'});
+ZeroClipboard.setMoviePath( '/plugin_assets/redmine_checkout/images/ZeroClipboard.swf' );
+    
+//]]>
+</script>
+  </div>
+  
+</div>
+<div style="clear: left"></div>
+
+
+
+<div class="contextual">
+  
+
+<a href="/projects/cloud9/repository/statistics" class="icon icon-stats">Statistics</a>
+
+<form action="/projects/cloud9/repository/changes/tools/klee-replay/klee-replay.h?rev=" id="revision_selector" method="get">  <!-- Branches Dropdown -->
+      | Branch: 
+    <select id="branch" name="branch"><option value=""></option>
+<option value="master" selected="selected">master</option>
+<option value="signal">signal</option></select>
+  
+  
+  | Revision: 
+  <input id="rev" name="rev" size="8" type="text" value="master" />
+</form>
+</div>
+
+<h2>
+  <a href="/projects/cloud9/repository/revisions/master/show">root</a>
+
+    / <a href="/projects/cloud9/repository/revisions/master/show/tools">tools</a>
+
+    / <a href="/projects/cloud9/repository/revisions/master/show/tools/klee-replay">klee-replay</a>
+
+
+    / <a href="/projects/cloud9/repository/revisions/master/changes/tools/klee-replay/klee-replay.h">klee-replay.h</a>
+
+
+@ master
+
+
+</h2>
+
+<p>
+
+<p>
+History |
+
+    <a href="/projects/cloud9/repository/revisions/master/entry/tools/klee-replay/klee-replay.h">View</a> |
+
+
+    <a href="/projects/cloud9/repository/revisions/master/annotate/tools/klee-replay/klee-replay.h">Annotate</a> |
+
+<a href="/projects/cloud9/repository/revisions/master/raw/tools/klee-replay/klee-replay.h">Download</a>
+(708 Bytes)
+</p>
+
+
+</p>
+
+
+
+<form action="/projects/cloud9/repository/diff/tools/klee-replay/klee-replay.h" method="get">
+<table class="list changesets">
+<thead><tr>
+<th>#</th>
+<th></th>
+<th></th>
+<th>Date</th>
+<th>Author</th>
+<th>Comment</th>
+</tr></thead>
+<tbody>
+
+
+
+<tr class="changeset odd">
+<td class="id"><a href="/projects/cloud9/repository/revisions/71e3fb0d58392380aea48e47ebb349ec0fbe3ca4" title="Revision 71e3fb0d58392380aea48e47ebb349ec0fbe3ca4">71e3fb0d</a></td>
+<td class="checkbox"></td>
+<td class="checkbox"></td>
+<td class="committed_on">05 August 2009 05:22 AM</td>
+<td class="author">ddunbar </td>
+<td class="comments"><p>Add klee-replay tool.<br /> - Not yet enabled as part of the build, and not recently tested.</p>
+
+
+	<pre><code>- This has also been trimmed down significantly from the version which is able<br />   to fail system calls, that functionality was too experimental to be generally<br />   useful....</code></pre></td>
+</tr>
+
+
+</tbody>
+</table>
+
+</form>
+
+
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+	
+<div id="footer">
+  <div class="bgl"><div class="bgr">
+    Powered by <a href="http://www.redmine.org/">Redmine</a> &copy; 2006-2010 Jean-Philippe Lang
+  </div></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-373800-11']);
+  _gaq.push(['_setCustomVar', 1, 'Login', document.getElementById('loggedas') != null
+  ? document.getElementById('loggedas').childNodes[1].textContent : '(anonymous)', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

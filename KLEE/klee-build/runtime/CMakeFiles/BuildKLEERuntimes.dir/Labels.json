@@ -1,0 +1,55 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/CMakeFiles/BuildKLEERuntimes"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/CMakeFiles/BuildKLEERuntimes.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/CMakeFiles/BuildKLEERuntimes-complete.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-install.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-mkdir.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-download.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-update.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-patch.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-configure.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-build.rule"
+		},
+		
+		{
+			"file" : "/root/work/savior/KLEE/klee-build/runtime/BuildKLEERuntimes-prefix/src/BuildKLEERuntimes-stamp/BuildKLEERuntimes-RuntimeBuild.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "BuildKLEERuntimes" ],
+		"name" : "BuildKLEERuntimes"
+	}
+}

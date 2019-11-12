@@ -1,0 +1,1 @@
+cmd='/usr/local/bin/cmake;-E;echo;'

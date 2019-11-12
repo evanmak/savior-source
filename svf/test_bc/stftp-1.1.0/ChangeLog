@@ -1,0 +1,99 @@
+February 3, 2007
+----------------
+1.1.0 released.
+
+main.c: version step
+
+February 1, 2007
+----------------
+cmdloop.c: added a filter command that only displays files starting with
+         : the given pattern
+
+misc.c: added fscan() and fnullify() to aid in the filter process; help text
+
+main.c: fixed bug in local view
+
+January 23, 2007
+----------------
+1.0.0 released.
+
+misc.c: updated help text to reflect this change
+
+cmdloop.c: made the left and right arrow keys synonyms for 'u' and '\n'
+
+0.4.0 released.
+
+cmdloop.c: added NULL check that should have been there in the first place
+
+January 22, 2007
+----------------
+ftp.c: fixed small memory leak
+
+misc.c: Added the new commands to the help text	
+
+Makefile: (possibly) fixed strange bug when compiling on Mac OS
+
+cmdloop.c: Much. Added new functionality for selecting files for put, and
+         : thus a new function, local_loop(), for doing so. Also changed
+         : the original put code to accomodate this.
+         : Added directory traversal to local view; was lazy before
+		 : Put in some error-checking code
+
+listparse.c: changed code to work with local directory listings (or at least
+           : those on my machine)
+           : fixed small memory leak
+
+tty.c: changed return type of e_prompt() to void
+
+January 21, 2007
+----------------
+main.c: fixed a few bugs
+
+cmdloop.c: changed method of getting cwd because of oddity from FreeBSD
+
+0.3.1 released.
+
+ftp.c: fixed notable bug with uploading binary files
+     : fixed stupid file not found code
+
+cmdloop.c: fixed a small memory leak
+         : fixed stupid file not found code
+
+main.c: fixed a small memory leak and overflow
+
+January 20, 2007
+----------------
+0.3.0 released.
+
+cmdloop.c: added file upload and file deletion commands
+         : added an overwrite check when downloading files
+
+ftp.c: added the ftp_stor() function for uploading files
+
+tty.c: fixed c_prompt() from doing more than it needed to
+
+misc.c: extended the help msg to include the new commands
+
+November 1, 2006
+----------------
+0.2.0 released.
+
+ftp.c: added a progress bar to mark the passage of time
+
+cmdloop.c: added new commands to change and print local directory
+
+misc.c: updated help text with new commands
+
+October 31, 2006
+----------------
+cmdloop.c: added help command
+
+misc.c: moved nullify() from cmdloop.c to better location; fixed NULL stuff
+      : added help command
+
+main.c: fixed NULL pointer handling and multiline handling
+      : added -V (version) switch and version info
+
+0.1.1
+-----
+Initial pre-alpha release.

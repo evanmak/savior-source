@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../libkleeSupport.a  CMakeFiles/kleeSupport.dir/CompressionStream.cpp.o CMakeFiles/kleeSupport.dir/ErrorHandling.cpp.o CMakeFiles/kleeSupport.dir/FileHandling.cpp.o CMakeFiles/kleeSupport.dir/MemoryUsage.cpp.o CMakeFiles/kleeSupport.dir/PrintVersion.cpp.o CMakeFiles/kleeSupport.dir/RNG.cpp.o CMakeFiles/kleeSupport.dir/Time.cpp.o CMakeFiles/kleeSupport.dir/Timer.cpp.o CMakeFiles/kleeSupport.dir/TreeStream.cpp.o
+/usr/bin/ranlib ../libkleeSupport.a
