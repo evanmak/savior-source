@@ -20,13 +20,13 @@ make -j4
 ```
 cd Release-build/bin
 
-dma -o /path/to/output/file -[Point-to-scheme] /path/to/bitcode/file
-e.g., dma -o test.test -fspta ~/test_bc/minigzip.bc
+dma -o /path/to/output/file -[Point-to-scheme] -edge out.edge -o out.reach /path/to/bitcode/file 
+e.g., dma -o test.test -fspta -edge minigzip.edge -o minigzip.reach.cov ~/test_bc/minigzip.bc
 ```
 
 ### or using the wrapper
 ```
-dma_wrapper.py -ander -savior-label-only -o tcpdump.reach -edge tcpdump.edge muse-tcpdump.bc
+dma_wrapper.py -ander -o tcpdump.reach -edge tcpdump.edge savior-tcpdump.bc
 ```
 
 Point-to-scheme
