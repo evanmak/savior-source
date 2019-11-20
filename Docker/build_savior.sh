@@ -81,7 +81,7 @@ function dir_check {
     tar zxvf cmake-3.7.2.tar.gz
     cd $SOFTWARE_DIR/$PROG
     ./configure
-    make -j8
+    make -j$(nproc)
     make install
 
     apt-get install -y zlib1g-dev libncurses5-dev
@@ -107,7 +107,7 @@ function dir_check {
     mkdir build
     cd $SOFTWARE_DIR/llvm-3.6/build
     cmake -DLLVM_ENABLE_RTTI:BOOL=ON ..
-    make install -j64
+    make install -j$(nproc)
 
     PROG=KLEE
     apt-get install -y build-essential curl libcap-dev libncurses5-dev python-minimal unzip
@@ -127,7 +127,7 @@ function dir_check {
     mkdir build
     cd build
     cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DENABLE_PYTHON_INTERFACE:BOOL=OFF ..
-    make -j16
+    make -j$(nproc)
     make install
 
     cd ..
@@ -138,13 +138,13 @@ function dir_check {
     #installing uclibc
     cd $SOFTWARE_DIR/klee-uclibc
     ./configure --make-llvm-lib
-    make -j16
+    make -j$(nproc)
     cd ..
 
     #installing uclibc++
     cd $WORK_DIR/savior/klee-uclibc++
     ./configure --with-llvm-build-dir=/usr/local/ --with-klee-src-dir=$WORK_DIR/savior/KLEE
-    make -j16
+    make -j$(nproc)
     cd ..
 
     #installing tcmalloc
@@ -196,7 +196,7 @@ function dir_check {
     mkdir install
     cd $SOFTWARE_DIR/llvm-4.0/build
     cmake -DLLVM_ENABLE_RTTI:BOOL=ON -DCMAKE_INSTALL_PREFIX=$SOFTWARE_DIR/llvm-4.0/install ..
-    make install -j64
+    make install -j$(nproc)
 
     #install svf
     PROG=svf
