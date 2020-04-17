@@ -160,27 +160,27 @@ class ConcExplorer:
                 continue
 
 
-        #--create sync_dir for new klee instance
-        new_sync_dir = self.sync_dir_base+"/klee_instance_conc_"+str(pid).zfill(6)+"/queue"
-        utils.mkdir_force(new_sync_dir)
+	    #--create sync_dir for new klee instance
+	    new_sync_dir = self.sync_dir_base+"/klee_instance_conc_"+str(pid).zfill(6)+"/queue"
+	    utils.mkdir_force(new_sync_dir)
+	
+	    #--build klee instance cmd
+	    edge_ids = [x for x in input_id_map['interesting_edges']]
+	    klee_cmd = self.build_cmd(klee_seed_dir, edge_ids, new_sync_dir, max_input_size, afl_input, cov_file)
+	    print ' '.join(klee_cmd)
 
-        #--build klee instance cmd
-        edge_ids = [x for x in input_id_map['interesting_edges']]
-        klee_cmd = self.build_cmd(klee_seed_dir, edge_ids, new_sync_dir, max_input_size, afl_input, cov_file)
-        print ' '.join(klee_cmd)
-
-        #--construct process meta data, add to jobs list
-        kw = {'mock_eof':True, 'mem_cap': self.max_mem, 'use_shell':True}
-        p = multiprocessing.Process(target=utils.exec_async, args=[klee_cmd], kwargs=kw)
-        p.daemon = True
-        task_st = {}
-        task_st['instance'] = p
-        task_st['sync_dir'] = new_sync_dir
-        task_st['seed'] = klee_seed
-        task_st['cmd'] = klee_cmd
-        if "AFLUnCovSearcher" in self.get_search_heuristics():
-            task_st['afl_cov'] = self.fuzzer_cov_file
-        self.jobs[pid] = task_st
+	    #--construct process meta data, add to jobs list
+	    kw = {'mock_eof':True, 'mem_cap': self.max_mem, 'use_shell':True}
+	    p = multiprocessing.Process(target=utils.exec_async, args=[klee_cmd], kwargs=kw)
+	    p.daemon = True
+	    task_st = {}
+	    task_st['instance'] = p
+	    task_st['sync_dir'] = new_sync_dir
+	    task_st['seed'] = klee_seed
+	    task_st['cmd'] = klee_cmd
+	    if "AFLUnCovSearcher" in self.get_search_heuristics():
+	        task_st['afl_cov'] = self.fuzzer_cov_file
+	    self.jobs[pid] = task_st
 
         for pid, task in self.jobs.iteritems():
             try:
