@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+import utils
 import ConfigParser
 from utils import bcolors
 from operator import itemgetter
@@ -23,9 +24,10 @@ class SequentialOracle:
         sync_dir = config.get("moriarty", "sync_dir").replace("@target", target_dir)
         return os.path.join(sync_dir, "master", "queue")
 
-
+##### PR: filename mismatch
     def read_queue(self):
-        return [f for f in os.listdir(self.fuzzer_input_dir) if os.path.isfile(os.path.join(self.fuzzer_input_dir, f))]
+        return [utils.from_afl_name_to_simple(f) for f in os.listdir(self.fuzzer_input_dir) if os.path.isfile(os.path.join(self.fuzzer_input_dir, f))]
+##### PR: filename mismatch
 
     def get_result(self, raw_data, max_results, edge_threshold=0.8):
         stats = []

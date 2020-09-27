@@ -54,8 +54,10 @@ class BugPotentialOracle:
         fuzzer_dir = os.path.join(sync_dir, "slave_000001", "queue")
         return fuzzer_dir
 
+##### PR: filename mismatch
     def read_queue(self):
-        return [f for f in os.listdir(self.fuzzer_input_dir) if os.path.isfile(os.path.join(self.fuzzer_input_dir, f))]
+        return [utils.from_afl_name_to_simple(f) for f in os.listdir(self.fuzzer_input_dir) if os.path.isfile(os.path.join(self.fuzzer_input_dir, f))]
+##### PR: filename mismatch
 
     def get_oracle_config(self):
         config = ConfigParser.ConfigParser()

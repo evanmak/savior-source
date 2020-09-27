@@ -105,7 +105,9 @@ class SymExplorer:
 
             #--generate klee seed ktest
             # print input_id_map
-            afl_input = input_id_map['input']
+            afl_input = utils.from_simple_to_afl_name(input_id_map['input'])
+            if not afl_input:
+                continue
             klee_seed = self.seed_dir+"/klee_instance_sym_"+str(pid).zfill(6)+".ktest"
             # print "before calling converter"
             # print afl_input
