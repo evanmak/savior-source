@@ -11,5 +11,5 @@ Verify the example behavior by running a testcase passing the magic number check
 
 ```
 ./savior-example < test.in
-read 41464c5f53544f50 compared against 41464c5f53544f50
+Magic number passed
 ```
