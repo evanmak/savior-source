@@ -106,8 +106,8 @@ function dir_check {
     cd $SOFTWARE_DIR/llvm-3.6
     mkdir build
     cd $SOFTWARE_DIR/llvm-3.6/build
-    cmake -DLLVM_ENABLE_RTTI:BOOL=ON ..
-    make install -j$(nproc)
+    cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_RTTI:BOOL=ON ..
+    make install -j4
 
     PROG=KLEE
     apt-get install -y build-essential curl libcap-dev libncurses5-dev python-minimal unzip
@@ -160,7 +160,7 @@ function dir_check {
     #TODO: open source KLEE concolic executor separately
     #installing klee-3.6
     rm -rf /root/savior/KLEE/klee-build
-    cd ~/work/savior/KLEE
+    cd $WORK_DIR/savior/KLEE
     mkdir klee-build
     cd klee-build
     echo "NOTE: you might need to rebuild libboost for C++ ABI compatibility on Ubuntu 16.04"
@@ -195,12 +195,12 @@ function dir_check {
     mkdir build
     mkdir install
     cd $SOFTWARE_DIR/llvm-4.0/build
-    cmake -DLLVM_ENABLE_RTTI:BOOL=ON -DCMAKE_INSTALL_PREFIX=$SOFTWARE_DIR/llvm-4.0/install ..
-    make install -j$(nproc)
+    cmake -DLLVM_LINK_LLVM_DYLIB=ON -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_RTTI:BOOL=ON -DCMAKE_INSTALL_PREFIX=$SOFTWARE_DIR/llvm-4.0/install ..
+    make install -j4
 
     #install svf
     PROG=svf
-    
+
     #build insertbug pass with llvm-3.6 first
     cd $WORK_DIR/$PROJ/svf/InsertBugPotential
     mkdir build && cd build && cmake .. && make -j$(nproc)
@@ -214,4 +214,3 @@ function dir_check {
     cmake ..
     make -j$(nproc)
     cd .. && ln -sf $(pwd)/Release-build/bin/dma_wrapper.py dma_wrapper.py
-
