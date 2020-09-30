@@ -26,7 +26,7 @@ example.conf : savior-example.dma.bc
 seed_folder :  example.conf
 	mkdir -p "seed_folder" && echo "a" > seed_folder/seed1.txt
 
-# and run: python ../savior/coordinator/moriarty.py -t $(pwd) -c $(pwd)/example.conf
+# and run: python ../coordinator/moriarty.py -t $(pwd) -c $(pwd)/example.conf
 
 clean:
-	rm example *.o *.o.bc *.bc savior-example savior-example.dma example.conf example.edge example.reach.bug labelmap.csv locmap.csv paired_edges.csv .savior_sanitizer_combination .afl_coverage_combination
+	rm example .example* *.bc savior-example savior-example.dma example.conf example.edge example.reach.bug labelmap.csv locmap.csv paired_edges.csv .savior_sanitizer_combination .afl_coverage_combination
