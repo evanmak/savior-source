@@ -29,4 +29,4 @@ seed_folder :  example.conf
 # and run: python ../savior/coordinator/moriarty.py -t $(pwd) -c $(pwd)/example.conf
 
 clean:
-	rm example *.bc savior-example savior-example.dma example.conf example.edge example.reach.bug labelmap.csv locmap.csv paired_edges.csv
+	rm example *.o *.o.bc *.bc savior-example savior-example.dma example.conf example.edge example.reach.bug labelmap.csv locmap.csv paired_edges.csv .savior_sanitizer_combination .afl_coverage_combination
