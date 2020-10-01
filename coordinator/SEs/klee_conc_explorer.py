@@ -148,7 +148,9 @@ class ConcExplorer:
         for input_id_map in input_id_map_list:
             #--generate klee seed ktest
             # print input_id_map
-            afl_input = input_id_map['input']
+            afl_input = utils.from_simple_to_afl_name(input_id_map['input'])
+            if not afl_input:
+                continue
             if max_input_size < os.path.getsize(afl_input):
                 max_input_size = os.path.getsize(afl_input)
             klee_seed = klee_seed_dir+"/"+str(input_counter).zfill(6)+".ktest"

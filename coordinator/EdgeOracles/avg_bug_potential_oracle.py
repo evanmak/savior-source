@@ -58,8 +58,10 @@ class AvgBugPotentialOracle:
         fuzzer_dir = os.path.join(sync_dir, "slave_000001", "queue")
         return fuzzer_dir
 
+##### PR: filename mismatch
     def read_queue(self):
-        return [f for f in os.listdir(self.fuzzer_input_dir) if os.path.isfile(os.path.join(self.fuzzer_input_dir, f))]
+        return [utils.from_afl_name_to_simple(f) for f in os.listdir(self.fuzzer_input_dir) if os.path.isfile(os.path.join(self.fuzzer_input_dir, f))]
+##### PR: filename mismatch
 
     def get_oracle_config(self):
         config = ConfigParser.ConfigParser()
@@ -141,7 +143,7 @@ class AvgBugPotentialOracle:
             stat['score'] = 0.0
             stat['first_seen'] = seed
             stat['interesting_edges'] = []
-            stat['size'] = os.path.getsize(seed)
+            stat['size'] = os.path.getsize(utils.from_simple_to_afl_name(seed)) ##### PR: filename mismatch
             contributing_edge_counter = 0
             for e in set(edges):
                 is_interesting_edge = False
@@ -188,12 +190,13 @@ class AvgBugPotentialOracle:
         # even though it contains new coverage
         score2 = "orig:" in testcase
         # Smaller size is better
-        score3 = -os.path.getsize(testcase)
+        score3 = -os.path.getsize(utils.from_simple_to_afl_name(testcase))  ##### PR: filename mismatch
         # Shorter path is better
         score4 = -self.get_path_length(testcase)
         # Since name contains id, so later generated one will be chosen earlier
         score5 = testcase
         return (score1, score2, score3, score4, score5)
+
 
     def testcase_compare(self, a, b):
         a_score = self.get_score(a)

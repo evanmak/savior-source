@@ -12,6 +12,7 @@ import resource
 import shutil
 import datetime
 import random
+import glob
 
 def error_msg(s):
     print bcolors.FAIL+"[ERROR] {0}".format(s)+bcolors.ENDC
@@ -210,6 +211,18 @@ def merge_coverage_files(data_files, output_name, ftype='branch-only'):
         error_msg("can not merge coverage file {0}".format(output_name))
         return False
 
+##### PR: filename mismatch
+def from_simple_to_afl_name(simple_path):
+    tmp = os.path.basename(simple_path).replace("_",":")
+    tmp = glob.glob(os.path.join(os.path.dirname(simple_path), tmp) + "*")
+    if not tmp:
+        return ""
+    else:
+        return tmp[0]
+
+def from_afl_name_to_simple(afl_name):
+    return os.path.join(os.path.dirname(afl_name), os.path.basename(afl_name)[:9].replace(':','_'))
+##### PR: filename mismatch
 
 def expand_stack_limit():
     """Klee requires ulimit to set stack as unlimited"""
@@ -283,9 +296,9 @@ def gen_loctrace_file(prog, inp, input_mode,outfile=None, timeout=1):
             os.unlink(target_file)
     myenv['AFL_LOC_TRACE_FILE'] = target_file
     if input_mode == "symfile":
-        prog_cmd = prog.replace("INPUT_FILE", inp)
+        prog_cmd = prog.replace("INPUT_FILE", from_simple_to_afl_name(inp))
     elif input_mode == "stdin":
-        prog_cmd = " ".join([prog + " < " + inp])
+        prog_cmd = " ".join([prog + " < " + from_simple_to_afl_name(inp)])
     prog_cmd = "timeout " + str(timeout)+"s " + prog_cmd
     prog_cmd = prog_cmd + " > /dev/null 2> /dev/null"
     p = subprocess.Popen(prog_cmd, shell=True, env=myenv)
@@ -326,7 +339,7 @@ def log_recommend_edges(lst, log, loc_map, find_loc_script, prog, cur_heu):
         return
 
     def _get_src_loc(e, s):
-        cmd = [find_loc_script, e, loc_map, prog + " < " + s]
+        cmd = [find_loc_script, e, loc_map, prog + " < " + from_simple_to_afl_name(s)]
         cmd = " ".join(cmd)
         #we call the find script twice, first to get loctrace, second to get src
         subprocess.call(cmd, shell=True)
@@ -375,7 +388,7 @@ def save_inputs(seed_list, target_dir):
         error_msg("{0} is not a valid directory".format(target_dir))
         return
     for seed in seed_list:
-        shutil.copy2(seed['input'], target_dir)
+        shutil.copy2(from_simple_to_afl_name(seed['input']), target_dir)
 
 def pack_klee_errors(search_dir, target_dir):
     """
